@@ -58,6 +58,9 @@
       transform: translateY(-5px);
       transition: transform 0.3s ease-in-out;
     }
+    .twitter-follow-fallback {
+      display: none; /* Ensure fallback is hidden by default */
+    }
   </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 text-gray-900 flex flex-col antialiased">
@@ -84,7 +87,7 @@
       <!-- Twitter Follow Button -->
       <div class="animate-fadeIn" style="animation-delay: 1.2s;">
         <a class="twitter-follow-button" href="https://twitter.com/buildooring" data-show-screen-name="true" data-size="large">Follow @buildooring</a>
-        <a href="https://x.com/buildooring" class="text-white hover:underline text-sm hidden twitter-follow-fallback">Follow @buildooring on X</a>
+        <a href="https://x.com/buildooring" class="text-white hover:underline text-sm twitter-follow-fallback">Follow @buildooring on X</a>
       </div>
     </div>
   </header>
@@ -188,15 +191,18 @@
     fetchLatestXPost();
     fetchTokenStats();
 
-    // Show fallback if Twitter button fails to load
+    // Check if Twitter Follow button loaded
     document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
-        const button = document.querySelector('.twitter-follow-button');
-        const fallback = document.querySelector('.twitter-follow-fallback');
-        if (button && !button.innerHTML.includes('iframe')) {
-          fallback.classList.remove('hidden');
+        const buttonContainer = document.querySelector('.twitter-follow-button').parentElement;
+        const iframe = buttonContainer.querySelector('iframe');
+        const fallback = buttonContainer.querySelector('.twitter-follow-fallback');
+        if (iframe && iframe.title.includes('Twitter Follow Button')) {
+          fallback.style.display = 'none'; // Explicitly hide if iframe is present
+        } else {
+          fallback.style.display = 'block'; // Show fallback only if button fails
         }
-      }, 3000); // Wait 3s for widget to load
+      }, 5000); // Increased to 5s to account for slower loads
     });
   </script>
 
