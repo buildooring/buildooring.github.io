@@ -113,14 +113,16 @@
   <section class="px-8 md:px-24 py-16 max-w-7xl mx-auto bg-white rounded-xl shadow-md">
     <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Live #BuiltInPublic Feed</h2>
     <div class="grid md:grid-cols-2 gap-12">
-      <!-- X Timeline Embed -->
+      <!-- Latest X Post via oEmbed -->
       <div>
         <h3 class="text-xl font-semibold text-gray-800 mb-4">Latest from X (@buildooring)</h3>
-        <!-- Replace this with your actual embed code from https://publish.twitter.com/ -->
-        <blockquote class="twitter-timeline" data-lang="en" data-height="400" data-theme="light" href="https://twitter.com/buildooring?ref_src=twsrc%5Etfw">Tweets by buildooring</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <div id="x-embed" class="bg-gray-100 p-4 rounded-lg min-h-[200px]">
+          <p class="text-gray-600">Loading latest post...</p>
+        </div>
+        <a href="https://x.com/buildooring" class="text-blue-500 hover:underline mt-2 block">View full profile</a>
       </div>
 
-      <!-- Token Stats from Pump.fun (via PumpPortal API) -->
+      <!-- Token Stats from Moralis API -->
       <div>
         <h3 class="text-xl font-semibold text-gray-800 mb-4">Real-Time Token Stats</h3>
         <div id="token-stats" class="bg-gradient-to-r from-blue-100 to-purple-100 p-6 rounded-lg">
@@ -130,24 +132,53 @@
     </div>
   </section>
 
+  <!-- Buildoor Grants Teaser -->
+  <section class="px-8 md:px-24 py-16 max-w-7xl mx-auto">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Buildoor Grants</h2>
+    <div class="bg-white p-8 rounded-xl shadow-md text-center">
+      <p class="text-gray-600 mb-4">Fuel the next #BuiltInPublic project! Community-voted micro-grants for buildoors—submit ideas during streams, holders decide winners.</p>
+      <a href="https://x.com/buildooring" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-full hover:shadow-xl transition-all">Apply Now (Coming Soon)</a>
+    </div>
+  </section>
+
   <script>
-    // Fetch token stats from PumpPortal API (replace with your coin address)
-    async function fetchTokenStats() {
+    // Fetch latest X post via oEmbed API
+    async function fetchLatestXPost() {
       try {
-        const response = await fetch('https://pumpportal.fun/api/data/token?ca=AbKGMocN67RN2nq8ee6UcjazJ2qji6MHwzKPPg8Jcx1c');
+        const response = await fetch(`https://publish.twitter.com/oembed?url=https://twitter.com/buildooring/statuses/latest&maxwidth=500`);
         const data = await response.json();
-        const statsDiv = document.getElementById('token-stats');
-        statsDiv.innerHTML = `
-          <p><strong>Price:</strong> $${data.price_usd}</p>
-          <p><strong>Market Cap:</strong> $${data.market_cap}</p>
-          <p><strong>Liquidity:</strong> $${data.liquidity}</p>
-          <p><strong>24h Volume:</strong> $${data.volume_24h}</p>
-        `;
+        const embedDiv = document.getElementById('x-embed');
+        embedDiv.innerHTML = data.html || '<p class="text-gray-600">No recent posts. Follow @buildooring for updates!</p>';
       } catch (error) {
-        document.getElementById('token-stats').innerHTML = '<p class="text-red-500">Error loading stats. Check console.</p>';
+        document.getElementById('x-embed').innerHTML = '<p class="text-red-500">Error loading X post. <a href="https://x.com/buildooring" class="underline">View on X</a></p>';
         console.error(error);
       }
     }
+
+    // Fetch token stats from Moralis API (free tier, no key for basics)
+    async function fetchTokenStats() {
+      const ca = 'AbKGMocN67RN2nq8ee6UcjazJ2qji6MHwzKPPg8Jcx1c';
+      try {
+        // Price from Moralis
+        const priceResponse = await fetch(`https://solana-gateway.moralis.io/token/mainnet/${ca}/price`);
+        const priceData = await priceResponse.json();
+        // Supply approximation (total supply for pump.fun tokens is often ~1B, but fetch metadata for accuracy)
+        const supply = 1000000000; // Placeholder; can enhance with full metadata fetch
+        const marketCap = (priceData.usdPrice * supply).toLocaleString();
+        const statsDiv = document.getElementById('token-stats');
+        statsDiv.innerHTML = `
+          <p><strong>Price:</strong> $${priceData.usdPrice ? priceData.usdPrice.toFixed(9) : 'N/A'}</p>
+          <p><strong>Supply:</strong> ${supply.toLocaleString()}</p>
+          <p><strong>Est. Market Cap:</strong> $${marketCap}</p>
+        `;
+      } catch (error) {
+        document.getElementById('token-stats').innerHTML = '<p class="text-red-500">Error loading stats (API limit?). Check pump.fun directly.</p>';
+        console.error(error);
+      }
+    }
+
+    // Load on page ready
+    fetchLatestXPost();
     fetchTokenStats();
   </script>
 
