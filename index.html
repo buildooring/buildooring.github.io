@@ -1,57 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>$Buildoor - Built in Public</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="min-h-screen bg-gradient-to-b from-white to-gray-100 text-gray-900 flex flex-col">
-    <!-- Hero Section -->
-    <header class="flex flex-col items-center justify-center text-center py-20 px-6">
-      <h1 class="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-teal-500 to-blue-600 bg-clip-text text-transparent">
-        $Buildoor
-      </h1>
-      <p class="mt-4 text-lg md:text-2xl text-gray-700 max-w-2xl">
-        The coin that’s <span class="font-bold text-teal-600">#BuiltInPublic</span>. Join the community of builders shaping the future of Web3.
-      </p>
-      <div class="mt-8">
-        <a href="#" class="bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded-2xl text-lg font-medium">
-          Buy $Buildoor
-        </a>
-      </div>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>$Buildoor = #BuiltInPublic</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 1s ease-in forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-white text-gray-900 flex flex-col font-sans antialiased">
+  
+  <!-- Hero Section -->
+  <header class="flex flex-col items-center justify-center text-center py-32 px-4 md:py-48">
+    <h1 class="text-6xl md:text-8xl font-bold text-gray-800 animate-fadeIn">
+      $Buildoor
+    </h1>
+    <p class="mt-6 text-xl md:text-3xl text-gray-600 max-w-2xl animate-fadeIn" style="animation-delay: 0.5s;">
+      The coin that’s <span class="font-bold text-gray-800">#BuiltInPublic</span>
+    </p>
+  </header>
 
-    <!-- Community / About Section -->
-    <section class="grid md:grid-cols-3 gap-6 px-8 md:px-20 py-16">
-      <div class="bg-white border border-gray-200 shadow-md p-6 flex flex-col items-center text-center rounded-2xl">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-teal-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
-        <h3 class="text-xl font-semibold">Launch Together</h3>
-        <p class="text-gray-600 mt-2">Every step of the roadmap is shared and built with the community.</p>
-      </div>
+  <!-- Community Section -->
+  <section class="grid md:grid-cols-3 gap-12 px-8 md:px-24 py-16 max-w-7xl mx-auto">
+    <div class="flex flex-col items-center text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-gray-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
+      </svg>
+      <h3 class="text-lg font-semibold text-gray-800">Launch Together</h3>
+      <p class="text-gray-600 mt-2">Every step of the roadmap is shared and built with the community.</p>
+    </div>
 
-      <div class="bg-white border border-gray-200 shadow-md p-6 flex flex-col items-center text-center rounded-2xl">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-blue-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5V4H2v16h5m10 0v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6h10z" />
-        </svg>
-        <h3 class="text-xl font-semibold">Community First</h3>
-        <p class="text-gray-600 mt-2">Your voice matters. Decisions are open, transparent, and built in public.</p>
-      </div>
+    <div class="flex flex-col items-center text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-gray-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5V4H2v16h5m10 0v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6h10z" />
+      </svg>
+      <h3 class="text-lg font-semibold text-gray-800">Community First</h3>
+      <p class="text-gray-600 mt-2">Your voice matters. Decisions are open, transparent, and built in public.</p>
+    </div>
 
-      <div class="bg-white border border-gray-200 shadow-md p-6 flex flex-col items-center text-center rounded-2xl">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-sky-500 mb-4" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0022.4.36a9.13 9.13 0 01-2.88 1.1A4.52 4.52 0 0016.5 0c-2.5 0-4.5 2-4.5 4.5 0 .35.04.7.11 1.03C7.7 5.35 4.07 3.37 1.64.39a4.48 4.48 0 00-.61 2.27c0 1.56.8 2.94 2.02 3.74a4.49 4.49 0 01-2.04-.56v.06c0 2.18 1.55 4 3.6 4.41a4.52 4.52 0 01-2.03.08c.57 1.78 2.22 3.07 4.18 3.1A9.06 9.06 0 010 19.54a12.8 12.8 0 006.92 2.03c8.3 0 12.84-6.87 12.84-12.83 0-.2-.01-.39-.02-.58A9.22 9.22 0 0023 3z" />
-        </svg>
-        <h3 class="text-xl font-semibold">#BuiltInPublic</h3>
-        <p class="text-gray-600 mt-2">Follow the journey on Twitter and contribute directly to $Buildoor’s growth.</p>
-      </div>
-    </section>
+    <div class="flex flex-col items-center text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-gray-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+      </svg>
+      <h3 class="text-lg font-semibold text-gray-800">#BuiltInPublic</h3>
+      <p class="text-gray-600 mt-2">Follow the journey on X and contribute directly to $Buildoor’s growth.</p>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="mt-auto py-12 text-center border-t border-gray-200">
-      <p class="mt-4 text-gray-500 text-sm">© 2025 $Buildoor • Built in Public</p>
-    </footer>
-  </body>
+  <!-- Footer -->
+  <footer class="mt-auto py-8 text-center text-gray-500 text-sm">
+    2025 $Buildoor = #BuiltInPublic
+  </footer>
+
+</body>
 </html>
