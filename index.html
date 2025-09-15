@@ -77,9 +77,16 @@
     <p class="mt-6 text-xl md:text-3xl text-white max-w-2xl animate-fadeIn relative z-10" style="animation-delay: 0.5s;">
       The coin that’s <span class="font-bold text-purple-200">#BuiltInPublic</span>
     </p>
-    <a href="https://pump.fun/coin/AbKGMocN67RN2nq8ee6UcjazJ2qji6MHwzKPPg8Jcx1c" class="mt-8 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 animate-fadeIn relative z-10" style="animation-delay: 1s;">
-      Join on pump.fun
-    </a>
+    <div class="mt-8 flex flex-col items-center space-y-4 relative z-10">
+      <a href="https://pump.fun/coin/AbKGMocN67RN2nq8ee6UcjazJ2qji6MHwzKPPg8Jcx1c" class="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 animate-fadeIn" style="animation-delay: 1s;">
+        Join on pump.fun
+      </a>
+      <!-- Twitter Follow Button -->
+      <div class="animate-fadeIn" style="animation-delay: 1.2s;">
+        <a class="twitter-follow-button" href="https://twitter.com/buildooring" data-show-screen-name="true" data-size="large">Follow @buildooring</a>
+        <a href="https://x.com/buildooring" class="text-white hover:underline text-sm hidden twitter-follow-fallback">Follow @buildooring on X</a>
+      </div>
+    </div>
   </header>
 
   <!-- Community Section -->
@@ -180,14 +187,22 @@
     // Load on page ready
     fetchLatestXPost();
     fetchTokenStats();
+
+    // Show fallback if Twitter button fails to load
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const button = document.querySelector('.twitter-follow-button');
+        const fallback = document.querySelector('.twitter-follow-fallback');
+        if (button && !button.innerHTML.includes('iframe')) {
+          fallback.classList.remove('hidden');
+        }
+      }, 3000); // Wait 3s for widget to load
+    });
   </script>
 
   <!-- Footer -->
   <footer class="mt-auto py-8 text-center text-gray-600 text-sm bg-white shadow-inner">
     <div class="flex justify-center space-x-4 mb-4">
-      <!-- Embedded Follow Button -->
-      <a class="twitter-follow-button" href="https://twitter.com/buildooring" data-show-screen-name="true">Follow @buildooring</a>
-      
       <a href="https://x.com/buildooring" class="text-blue-600 hover:text-blue-800 transition-colors">
         <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24">
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -202,7 +217,7 @@
     <p>2025 $Buildoor = #BuiltInPublic</p>
   </footer>
 
-  <!-- X Follow Button Script (moved here for reliable rendering) -->
+  <!-- Twitter Follow Button Script -->
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 </body>
