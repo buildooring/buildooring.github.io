@@ -109,6 +109,48 @@
     </div>
   </section>
 
+  <!-- Live Feed Section -->
+  <section class="px-8 md:px-24 py-16 max-w-7xl mx-auto bg-white rounded-xl shadow-md">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Live #BuiltInPublic Feed</h2>
+    <div class="grid md:grid-cols-2 gap-12">
+      <!-- X Timeline Embed -->
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Latest from X (@buildooring)</h3>
+        <!-- Replace this with your actual embed code from https://publish.twitter.com/ -->
+        <blockquote class="twitter-timeline" data-lang="en" data-height="400" data-theme="light" href="https://twitter.com/buildooring?ref_src=twsrc%5Etfw">Tweets by buildooring</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+
+      <!-- Token Stats from Pump.fun (via PumpPortal API) -->
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Real-Time Token Stats</h3>
+        <div id="token-stats" class="bg-gradient-to-r from-blue-100 to-purple-100 p-6 rounded-lg">
+          <p class="text-gray-600">Loading stats...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Fetch token stats from PumpPortal API (replace with your coin address)
+    async function fetchTokenStats() {
+      try {
+        const response = await fetch('https://pumpportal.fun/api/data/token?ca=AbKGMocN67RN2nq8ee6UcjazJ2qji6MHwzKPPg8Jcx1c');
+        const data = await response.json();
+        const statsDiv = document.getElementById('token-stats');
+        statsDiv.innerHTML = `
+          <p><strong>Price:</strong> $${data.price_usd}</p>
+          <p><strong>Market Cap:</strong> $${data.market_cap}</p>
+          <p><strong>Liquidity:</strong> $${data.liquidity}</p>
+          <p><strong>24h Volume:</strong> $${data.volume_24h}</p>
+        `;
+      } catch (error) {
+        document.getElementById('token-stats').innerHTML = '<p class="text-red-500">Error loading stats. Check console.</p>';
+        console.error(error);
+      }
+    }
+    fetchTokenStats();
+  </script>
+
   <!-- Footer -->
   <footer class="mt-auto py-8 text-center text-gray-600 text-sm bg-white shadow-inner">
     <div class="flex justify-center space-x-4 mb-4">
