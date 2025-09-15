@@ -6,87 +6,59 @@
   <title>$Buildoor = #BuiltInPublic</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
-    .animate-fadeInDown {
-      animation: fadeInDown 1s ease-out forwards;
-    }
-    body {
-      background: linear-gradient(to bottom, #ffffff, #f3f4f6);
+    .animate-fadeIn {
+      animation: fadeIn 1s ease-in forwards;
     }
   </style>
 </head>
-<body class="min-h-screen text-gray-900 flex flex-col font-sans antialiased">
-
-  <!-- Navigation Bar -->
-  <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-10">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-gray-800">$Buildoor</h1>
-      <div class="flex gap-4">
-        <a href="#community" class="text-gray-600 hover:text-gray-800">Community</a>
-        <a href="#join" class="text-gray-600 hover:text-gray-800">Join</a>
-      </div>
-    </div>
-  </nav>
-
+<body class="min-h-screen bg-white text-gray-900 flex flex-col font-sans antialiased">
+  
   <!-- Hero Section -->
-  <header class="flex flex-col items-center justify-center text-center py-48 px-4 md:py-64 mt-16">
-    <h1 class="text-7xl md:text-9xl font-extrabold text-gray-800 animate-fadeInDown">
+  <header class="flex flex-col items-center justify-center text-center py-32 px-4 md:py-48">
+    <h1 class="text-6xl md:text-8xl font-bold text-gray-800 animate-fadeIn">
       $Buildoor
     </h1>
-    <p class="mt-6 text-2xl md:text-4xl text-gray-600 max-w-3xl animate-fadeInDown" style="animation-delay: 0.5s;">
+    <p class="mt-6 text-xl md:text-3xl text-gray-600 max-w-2xl animate-fadeIn" style="animation-delay: 0.5s;">
       The coin that’s <span class="font-bold text-gray-800">#BuiltInPublic</span>
     </p>
-    <a href="#join" class="mt-8 inline-block bg-blue-500 text-white font-semibold py-3 px-8 rounded-full hover:bg-blue-600 transition duration-300 animate-fadeInDown" style="animation-delay: 1s;">
-      Get Started
-    </a>
   </header>
 
   <!-- Community Section -->
-  <section id="community" class="grid md:grid-cols-3 gap-12 px-8 md:px-24 py-24 max-w-7xl mx-auto bg-white rounded-lg shadow-lg">
-    <div class="flex flex-col items-center text-center p-6 rounded-md hover:shadow-md transition duration-300">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-blue-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+  <section class="grid md:grid-cols-3 gap-12 px-8 md:px-24 py-16 max-w-7xl mx-auto">
+    <div class="flex flex-col items-center text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-gray-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
       </svg>
-      <h3 class="text-xl font-semibold text-gray-800">Launch Together</h3>
+      <h3 class="text-lg font-semibold text-gray-800">Launch Together</h3>
       <p class="text-gray-600 mt-2">Every step of the roadmap is shared and built with the community.</p>
     </div>
 
-    <div class="flex flex-col items-center text-center p-6 rounded-md hover:shadow-md transition duration-300">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-blue-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+    <div class="flex flex-col items-center text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-gray-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5V4H2v16h5m10 0v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6h10z" />
       </svg>
-      <h3 class="text-xl font-semibold text-gray-800">Community First</h3>
+      <h3 class="text-lg font-semibold text-gray-800">Community First</h3>
       <p class="text-gray-600 mt-2">Your voice matters. Decisions are open, transparent, and built in public.</p>
     </div>
 
-    <div class="flex flex-col items-center text-center p-6 rounded-md hover:shadow-md transition duration-300">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-blue-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <div class="flex flex-col items-center text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-gray-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
       </svg>
-      <h3 class="text-xl font-semibold text-gray-800">#BuiltInPublic</h3>
+      <h3 class="text-lg font-semibold text-gray-800">#BuiltInPublic</h3>
       <p class="text-gray-600 mt-2">Follow the journey on X and contribute directly to $Buildoor’s growth.</p>
     </div>
   </section>
 
-  <!-- Connect Section -->
-  <section id="join" class="py-24 bg-gradient-to-r from-blue-50 to-gray-100 text-center">
-    <h2 class="text-4xl font-bold text-gray-800 mb-8">Join the $Buildoor Community</h2>
-    <div class="flex flex-col md:flex-row justify-center gap-6">
-      <a href="https://x.com/buildooring" class="inline-block bg-blue-500 text-white font-semibold py-4 px-8 rounded-full hover:bg-blue-600 transition duration-300 shadow-md">
-        Follow on X
-      </a>
-      <a href="https://pump.fun/coin/AbKGMocN67RN2nq8ee6UcjazJ2qji6MHwzKPPg8Jcx1c" class="inline-block bg-blue-500 text-white font-semibold py-4 px-8 rounded-full hover:bg-blue-600 transition duration-300 shadow-md">
-        Join on pump.fun
-      </a>
-    </div>
-  </section>
-
   <!-- Footer -->
-  <footer class="mt-auto py-8 text-center text-gray-500 text-sm bg-white shadow-inner">
-    2025 $Buildoor = #BuiltInPublic
+  <footer class="mt-auto py-8 text-center text-gray-500 text-sm">
+    2025 $Buildoor = #BuiltInPublic | 
+    <a href="https://x.com/buildooring" class="text-blue-500 hover:underline">Follow on X</a> | 
+    <a href="https://pump.fun/coin/AbKGMocN67RN2nq8ee6UcjazJ2qji6MHwzKPPg8Jcx1c" class="text-blue-500 hover:underline">Join on pump.fun</a>
   </footer>
 
 </body>
